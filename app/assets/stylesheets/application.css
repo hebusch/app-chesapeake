@@ -15,4 +15,23 @@
  *= require main
  */
 
- 
+*{
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    height:100vh;
+ }
+
+ .center {
+    height: 80vh;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
