@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_08_12_211207) do
 
   create_table "lotes", force: :cascade do |t|
     t.integer "lote_number", null: false
+    t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
