@@ -10,5 +10,11 @@ Rails.application.routes.draw do
     sign_out: 'logout', 
     sign_up: 'register'
   }
-  
+  resources :lotes do
+    collection do
+      get :reception, action: 'reception'
+      get :upload, action: 'upload_form'
+      post :upload, action: 'upload_process'
+    end
+  end  
 end

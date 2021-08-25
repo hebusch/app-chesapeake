@@ -1,0 +1,8 @@
+<%= link_to '<-- Volver', root_path %>
+<p class="title">Importaciones</p>
+<% @lotes.each do |lote| %>
+    <p>
+        Importación <%= lote.id %>, Numero cajas: <%= lote.cajas.count %>
+        <%= link_to 'Ver', lote_path(lote) %>
+    </p>
+<% end %>

@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_193310) do
+ActiveRecord::Schema.define(version: 2021_08_12_211207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cajas", force: :cascade do |t|
+    t.integer "private_id", null: false
+    t.string "code", null: false
+    t.float "weight", null: false
+    t.bigint "corte_id"
+    t.bigint "lote_id", null: false
+    t.index ["code"], name: "index_cajas_on_code", unique: true
+    t.index ["corte_id"], name: "index_cajas_on_corte_id"
+    t.index ["lote_id"], name: "index_cajas_on_lote_id"
+  end
+
+  create_table "cortes", force: :cascade do |t|
+    t.integer "code", null: false
+    t.string "description", null: false
+    t.index ["code"], name: "index_cortes_on_code", unique: true
+  end
+
+  create_table "lotes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +49,6 @@ ActiveRecord::Schema.define(version: 2021_08_11_193310) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cajas", "cortes"
+  add_foreign_key "cajas", "lotes"
 end

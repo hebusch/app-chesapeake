@@ -1,8 +1,9 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<h1>Home</h1>
-
-<h2>Bienvenido</h2>
+<h3><%= link_to 'Importaciones', lotes_path %></h3>
+<h3><%= link_to 'Cargar importación', upload_lotes_path %></h3>
+<h3><%= link_to 'Recepción', reception_lotes_path %></h3>
+<h3>Pedidos</h3>
 
 <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
