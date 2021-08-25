@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 2021_08_12_211207) do
   enable_extension "plpgsql"
 
   create_table "cajas", force: :cascade do |t|
+    t.integer "private_id", null: false
     t.string "code", null: false
     t.float "weight", null: false
-    t.bigint "corte_id", null: false
+    t.bigint "corte_id"
     t.bigint "lote_id", null: false
     t.index ["code"], name: "index_cajas_on_code", unique: true
     t.index ["corte_id"], name: "index_cajas_on_corte_id"
@@ -32,8 +33,6 @@ ActiveRecord::Schema.define(version: 2021_08_12_211207) do
   end
 
   create_table "lotes", force: :cascade do |t|
-    t.integer "lote_number", null: false
-    t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

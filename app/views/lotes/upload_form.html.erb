@@ -1,0 +1,11 @@
+<%= link_to '<-- Volver', root_path %>
+<p class="title">Cargar Importación</p>
+<p>Número Importación: <%= @default %></p>
+<%= form_for :lotes, html: { class: "form" }, multipart: true do |f| %>
+    <div class="control">
+        <%= f.file_field :file, required: true %>
+    </div>
+    <div class="control">
+        <%= f.submit "Upload" %>
+    </div>
+<% end %>
