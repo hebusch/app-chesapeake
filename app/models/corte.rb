@@ -1,3 +1,3 @@
 class Corte < ApplicationRecord
-    has_many :caja
+    has_many :cajas
 end

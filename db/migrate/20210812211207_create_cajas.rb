@@ -6,6 +6,8 @@ class CreateCajas < ActiveRecord::Migration[5.2]
       t.float :weight, null: false
       t.references :corte, foreign_key: true
       t.references :lote, null: false, foreign_key: true
+      t.boolean :received, default: false
+      t.boolean :manual, default: false
 
     end
 

@@ -1,0 +1,41 @@
+$("#codeInput").val('');
+<% if @do %>
+  <% if @caja_code.present? %>
+      <% if @box_in %>
+          <% caja = @caja_code %>
+          <% if @passed %>
+            $(document.body).append(
+                `<p style="color:red;">
+                  <%= caja.code %>: CAJA YA FUE ESCANEADA!
+                </p>`
+            );
+          <% else %>
+            $(document.body).append(
+                `<p style="color:green;">
+                  <%= caja.code %>: <%= caja.corte.description %>,
+                  <%= caja.weight %> Kg | OK
+                </p>`
+            );
+            var newValue = parseInt($('#count').html()) + 1;
+            $('#count').html(newValue);
+          <% end %>
+      <% else %>
+          $(document.body).append(
+          `<p> style="color:red;">
+            <%= params[:code_id]%>: CAJA DE OTRA IMPORTACION!
+          </p>`
+          );
+      <% end %>
+  <% else %>
+      $(document.body).append(
+          `<p style="color:blue;">
+          <%= params[:code_id]%>: CODIGO NO REGISTRADO. REGISTRAR.
+          </p>`
+      );
+      $('.modal').toggleClass('is-active');
+      var tmp = document.createElement("input");
+      document.body.appendChild(tmp);
+      tmp.focus();
+      document.body.removeChild(tmp);
+  <% end %>
+<% end %>
