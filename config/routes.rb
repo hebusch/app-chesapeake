@@ -12,9 +12,13 @@ Rails.application.routes.draw do
   }
   resources :lotes do
     collection do
-      get :reception, action: 'reception'
       get :upload, action: 'upload_form'
       post :upload, action: 'upload_process'
     end
-  end  
+  end
+  resources :receptions do
+    collection do
+      post :search, action: 'search'
+    end
+  end
 end

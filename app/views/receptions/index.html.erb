@@ -1,0 +1,8 @@
+<%= link_to '<-- Volver', root_path %>
+<p class="title">Recepciones</p>
+<% @receptions.each do |rec| %>
+    <p>
+        Importación N°<%= rec.lote.id %> | <%=rec.lote.created_at %> |
+        <%= link_to 'Recepcionar', rec %>
+    </p>
+<% end %>

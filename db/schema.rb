@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_211207) do
+ActiveRecord::Schema.define(version: 2021_08_26_195028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_08_12_211207) do
     t.float "weight", null: false
     t.bigint "corte_id"
     t.bigint "lote_id", null: false
+    t.boolean "received", default: false
+    t.boolean "manual", default: false
     t.index ["code"], name: "index_cajas_on_code", unique: true
     t.index ["corte_id"], name: "index_cajas_on_corte_id"
     t.index ["lote_id"], name: "index_cajas_on_lote_id"
@@ -37,6 +39,15 @@ ActiveRecord::Schema.define(version: 2021_08_12_211207) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "receptions", force: :cascade do |t|
+    t.bigint "lote_id", null: false
+    t.boolean "finished", default: false
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lote_id"], name: "index_receptions_on_lote_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -51,4 +62,5 @@ ActiveRecord::Schema.define(version: 2021_08_12_211207) do
 
   add_foreign_key "cajas", "cortes"
   add_foreign_key "cajas", "lotes"
+  add_foreign_key "receptions", "lotes"
 end

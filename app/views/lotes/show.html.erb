@@ -1,22 +1,25 @@
-<%= link_to '<-- Volver', root_path %>
-<p class="title">Importación <%= @lote.id %></p>
-<table class="table is-hoverable">
-    <thead>
-        <tr>
-            <th>Caja</th>
-            <th>Código</th>
-            <th>Peso</th>
-            <th>Corte</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @lote.cajas.each do |caja| %>
-            <tr>
-                <th><%= caja.private_id %></th>
-                <td><%= caja.code %></td>
-                <td><%= caja.weight %></td>
-                <td><%= caja.corte.description %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<%= link_to '<-- Volver', lotes_path %>
+<div class="container">
+    <div class="flex justify-content-center">
+        <table class="table is-hoverable">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Peso [kg]</th>
+                    <th scope="col">Corte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @lote.cajas.each do |caja| %>
+                    <tr>
+                        <th scope="row"><%= caja.private_id %></th>
+                        <td><%= caja.code %></td>
+                        <td><%= caja.weight %></td>
+                        <td><%= caja.corte.description %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

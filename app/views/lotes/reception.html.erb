@@ -1,6 +1,0 @@
-<%= link_to '<-- Volver', root_path %>
-<p class="title">Recepción</p>
-<%= form_tag("/search", method: 'get', remote: true) do %>
-    <%= text_field_tag(:code_id) %>
-    <%= submit_tag("Add") %>
-<% end %>

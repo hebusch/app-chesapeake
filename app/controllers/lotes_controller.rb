@@ -43,23 +43,14 @@ class LotesController < ApplicationController
       count += 1
     end
     lote.save
+    reception = Reception.new
+    reception.lote = lote
+    reception.save
   end
 
   def show
     @lote = Lote.find(params[:id])
   end
 
-  def search
-    respond_to do |format|
-      format.js
-    end
-  end
-  
-
-  private
-
-  def lote_params
-    params.require(:lote)
-  end
 
 end

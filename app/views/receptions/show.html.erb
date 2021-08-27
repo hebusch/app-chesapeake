@@ -1,0 +1,33 @@
+<%= link_to '<-- Volver', receptions_path %>
+
+<div class="modal">
+  <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <p class="title"> Código no registrado! </p>
+      </div>
+    </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<p class="title">Importación <%= @reception.lote.id %></p>
+
+<%= form_tag('search', remote: true) do %>
+    <%= text_field_tag(:code_id, nil, required: true,
+        maxlength: 15, id: 'codeInput', autofocus: true,
+        autocomplete: 'off')
+    %>
+    <%= submit_tag("Search", id: 'sendInput') %>
+<% end %>
+
+<p>
+  Cajas escaneadas: <span id="count"><%= @cajasOk.count %></span> /
+  <%= @reception.lote.cajas.count %>
+</p>
+
+<% @cajasOk.each do |caja| %>
+<p style="color:green;">
+  <%= caja.code %>: <%= caja.corte.description %>,
+  <%= caja.weight %> Kg | OK
+</p>
+<% end %>
